@@ -1,0 +1,4 @@
+import { Tabs } from 'expo-router';
+import { Text, type ColorValue } from 'react-native';
+const icon = (value: string, color: ColorValue) => <Text style={{ color, fontSize: 18 }}>{value}</Text>;
+export default function TabsLayout() { return <Tabs screenOptions={{ headerShown: false, tabBarStyle: { backgroundColor: '#18181b', borderTopColor: '#3f3f46', height: 64 }, tabBarActiveTintColor: '#22c55e', tabBarInactiveTintColor: '#71717a', tabBarLabelStyle: { fontSize: 10, fontWeight: '800' } }}><Tabs.Screen name="index" options={{ title: 'OS', tabBarIcon: ({ color }) => icon('▣', color) }}/><Tabs.Screen name="finance" options={{ title: 'Financeiro', tabBarIcon: ({ color }) => icon('$', color) }}/><Tabs.Screen name="invoices" options={{ title: 'Notas', tabBarIcon: ({ color }) => icon('▤', color) }}/><Tabs.Screen name="profile" options={{ title: 'Perfil', tabBarIcon: ({ color }) => icon('●', color) }}/></Tabs>; }

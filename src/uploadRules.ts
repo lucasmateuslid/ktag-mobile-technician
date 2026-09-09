@@ -1,0 +1,3 @@
+export const replaceUploads = (value: any, map: Record<string, string>): any => typeof value === 'string' ? map[value] || value : Array.isArray(value) ? value.map(item => replaceUploads(item, map)) : value && typeof value === 'object' ? Object.fromEntries(Object.entries(value).map(([key, item]) => [key, replaceUploads(item, map)])) : value;
+
+export const containsPendingUpload = (value: any): boolean => typeof value === 'string' ? value.startsWith('local-upload:') : Array.isArray(value) ? value.some(containsPendingUpload) : Boolean(value && typeof value === 'object' && Object.values(value).some(containsPendingUpload));
